@@ -1,9 +1,19 @@
 <?php
 namespace App\Repositories;
 
+use App\Models\Subscriber;
+
 class TaskRepository {
-    public function index()
+
+    public function logicCheck($inputData)
     {
-        dd('hello from task repository');
+        $exists = Subscriber::matchSegment(
+            $inputData['segment_name'],
+            $inputData['segment_logic_type'],
+            $inputData['text_type'],
+            $inputData['word']
+        )->exists();
+
+        return response()->json(['exists' => $exists]);
     }
 }

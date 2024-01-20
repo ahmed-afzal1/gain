@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [TaskController::class, 'index']);
+Route::post('/submit-form', [TaskController::class, 'segmentCheck']);
